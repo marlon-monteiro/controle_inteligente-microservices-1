@@ -11,3 +11,7 @@ EXPIRE=TIME. EX: 1d
 
 MONGODB_STRING=mongodb+srv://</user>:</password>@cluster0.vctr8.mongodb.net/</database-name>
 RABBITMQ=amqps://</URL>
+
+### HEROKU
+
+  - The name of this code on HEROKU is microservice1.
