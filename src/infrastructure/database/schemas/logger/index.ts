@@ -18,6 +18,7 @@ const loggerSchema = new mongoose.Schema({
     required: true,
   },
   accountName: { type: 'string', require: true },
+  dateTime: { type: Date, require: true }
 });
 
 loggerSchema.plugin(mongoosePaginate);

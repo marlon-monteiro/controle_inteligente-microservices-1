@@ -9,7 +9,7 @@ EXPIRE=TIME. EX: 1d
 
 ### FIRST MICROSERVICE (LOGGER...) DATABASE
 
-MONGODB_STRING=mongodb+srv://</user>:</password>@cluster0.vctr8.mongodb.net/</database-name>
+MONGODB_STRING=mongodb+srv://</user>:</password>@cluster0.vctr8.mongodb.net/firstMicroserviceDataBase>
 RABBITMQ=amqps://</URL>
 
 ### HEROKU
