@@ -17,7 +17,6 @@ class LoggerConsumer {
   private async loggerConsumer() {
     const channel = await this.connection.createChannel();
     await channel.assertQueue(this.queue);
-
     channel.consume(this.queue, async (msg) => {
       if (msg !== null) {
         const payload: LoggerModel = JSON.parse(msg.content.toString());
