@@ -10,7 +10,7 @@ class CreateLoggerController {
 
   async create(logger: LoggerModel) {
     try {
-      if (!logger.accountId || !logger.accountName || !logger.userAction || !logger.day || !logger.hour) return;
+      if (!logger.accountId || !logger.accountName || !logger.userAction || !logger.day || !logger.hour || !logger.dateTime) return;
       await this.createLoggerUseCase.execute(logger);
     } catch (error) {
       throw(error);
