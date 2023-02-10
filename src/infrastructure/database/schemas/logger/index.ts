@@ -22,4 +22,4 @@ const loggerSchema = new mongoose.Schema({
 });
 
 loggerSchema.plugin(mongoosePaginate);
-export default mongoose.model<LoggerModel>('logger_model', loggerSchema);
+export default mongoose.model<LoggerModel>('log', loggerSchema);

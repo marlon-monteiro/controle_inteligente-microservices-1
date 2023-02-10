@@ -9,7 +9,7 @@ class DataBase {
   private initDataBaseConnection() {
     const { MONGODB_STRING } = process.env
     const connectionString = MONGODB_STRING || '';
-    mongoose.connect(connectionString);
+    mongoose.connect(connectionString, {});
   }
 }
 export default DataBase;

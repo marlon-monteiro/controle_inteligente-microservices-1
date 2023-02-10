@@ -1,10 +1,11 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 
 import 'dotenv/config';
 import DataBase from '../database';
 import Amqp from '../messenger/rabbitMQ';
+import routes from '../routes/routes';
 
 class ServerInstance {
   public express: express.Application;
@@ -43,7 +44,7 @@ class ServerInstance {
   }
 
   private routes() {
-    // this.express.use(routesApplication);
+    this.express.use(routes);
   }
 }
 
