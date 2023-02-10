@@ -1,5 +1,6 @@
 import { Request , Response} from 'express';
 import { LoggerModel } from '../../../domain/model/logger';
+import CreateLoggerTranslate from '../../../infrastructure/data-access/create_logger/translates/translate';
 import CreateLoggerUseCase from "../../../services/usecases/logger/create_logger_use_case";
 
 class CreateLoggerController {
@@ -17,6 +18,8 @@ class CreateLoggerController {
       const { page, perPage, action} = request.query;
       const createLoggerUseCase = new CreateLoggerUseCase();
       const data = await createLoggerUseCase.listAllLogs(page?.toString()!, perPage?.toString()!, action?.toString()!);
+      data.docs = new CreateLoggerTranslate().loggerByGroup(data);
+      
       return response.status(200).json({ data });
     } catch (error) {
       return response.status(400).json({ error });
