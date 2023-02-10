@@ -3,7 +3,13 @@ import { LoggerModel } from '../../model/logger';
 
 interface ICreateLoggerUseCase { 
   execute(logger: LoggerModel): Promise<void>; 
-  listAllLogs(page: string, perPage: string, action: string | undefined): Promise<PaginateResult<LoggerModel & { _id: any; }>>;
+  listAllLogs(
+    page: string, 
+    perPage: string,
+    action: string | undefined,
+    startDate: string | undefined,
+    endDate: string | undefined
+     ): Promise<PaginateResult<LoggerModel & { _id: any; }>>;
 }
 
 export default ICreateLoggerUseCase;

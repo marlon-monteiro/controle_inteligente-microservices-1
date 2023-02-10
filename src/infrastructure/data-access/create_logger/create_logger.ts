@@ -4,7 +4,13 @@ import loggerSchema from '../../database/schemas/logger'
 import ICreateLogger from "./i_create_logger";
 
 class CreateLoggerDataAccess implements ICreateLogger {
-  async listAllLogs(page: string, perPage: string, action: string | undefined): Promise<PaginateResult<LoggerModel & { _id: any; }>>  {
+  async listAllLogs(
+    page: string,
+    perPage: string,
+    action: string | undefined,
+    startDate: string | undefined,
+    endDate: string | undefined
+  ): Promise<PaginateResult<LoggerModel & { _id: any; }>> {
     try {
       const options = {
         sort: 'dateTime',
@@ -13,6 +19,12 @@ class CreateLoggerDataAccess implements ICreateLogger {
       };
       const data = await loggerSchema.paginate({
         $and: [
+          startDate || endDate ? {
+            day: {
+              $gte: startDate || endDate,
+              $lte: endDate || startDate,
+            }
+          } : {},
           action ? {
             userAction: action,
           } : {},
@@ -27,7 +39,7 @@ class CreateLoggerDataAccess implements ICreateLogger {
     try {
       await new loggerSchema(payload).save();
     } catch (error) {
-      throw(error);
+      throw (error);
     }
   }
 }
