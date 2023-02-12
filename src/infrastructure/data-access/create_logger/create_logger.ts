@@ -13,7 +13,7 @@ class CreateLoggerDataAccess implements ICreateLogger {
   ): Promise<PaginateResult<LoggerModel & { _id: any; }>> {
     try {
       const options = {
-        sort: 'dateTime',
+        sort: { dateTime: 'ascending' },
         page: parseInt(String(page), 10) || 1,
         limit: parseInt(String(perPage), 10) || 10,
       };
