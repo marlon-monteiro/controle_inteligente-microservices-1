@@ -22,7 +22,7 @@ class CreateLoggerDataAccess implements ICreateLogger {
             userAction: action,
           } : {},
         ]
-      }).sort();
+      }).sort({ dateTime: -1 });
       return data;
     } catch (error) {
       throw (error);
