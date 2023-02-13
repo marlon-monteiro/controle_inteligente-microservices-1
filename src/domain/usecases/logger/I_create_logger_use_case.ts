@@ -9,7 +9,7 @@ interface ICreateLoggerUseCase {
     action: string | undefined,
     startDate: string | undefined,
     endDate: string | undefined
-     ): Promise<PaginateResult<LoggerModel & { _id: any; }>>;
+     ): Promise<Array<LoggerModel>>;
 }
 
 export default ICreateLoggerUseCase;

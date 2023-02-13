@@ -15,7 +15,7 @@ class CreateLoggerUseCase implements ICreateLoggerUseCase {
     action: string | undefined,
     startDate: string | undefined,
     endDate: string | undefined
-    ): Promise<PaginateResult<LoggerModel & { _id: any; }>> {
+    ): Promise<Array<LoggerModel>> {
     return await this.createLoggerDataAccess.listAllLogs(page, perPage, action, startDate, endDate);
   }
 

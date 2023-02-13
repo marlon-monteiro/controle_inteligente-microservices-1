@@ -18,9 +18,9 @@ class CreateLoggerController {
       const { page, perPage, action, startDate, endDate} = request.query;
       const createLoggerUseCase = new CreateLoggerUseCase();
       const data = await createLoggerUseCase.listAllLogs(page?.toString()!, perPage?.toString()!, action?.toString()!, startDate?.toString()!, endDate?.toString()!);
-      data.docs = new CreateLoggerTranslate().loggerByGroup(data);
-      
-      return response.status(200).json({ data });
+      const payload = await new CreateLoggerTranslate().loggerByGroup(data);
+
+      return response.status(200).json({ data: payload.reverse() });
     } catch (error) {
       return response.status(400).json({ error });
     }

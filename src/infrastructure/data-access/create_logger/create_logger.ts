@@ -10,26 +10,9 @@ class CreateLoggerDataAccess implements ICreateLogger {
     action: string | undefined,
     startDate: string | undefined,
     endDate: string | undefined
-  ): Promise<PaginateResult<LoggerModel & { _id: any; }>> {
+  ): Promise<Array<LoggerModel>> {
     try {
-      const options = {
-        sort: { dateTime: 'ascending' },
-        page: parseInt(String(page), 10) || 1,
-        limit: parseInt(String(perPage), 10) || 10,
-      };
-      const data = await loggerSchema.paginate({
-        $and: [
-          startDate || endDate ? {
-            day: {
-              $gte: startDate || endDate,
-              $lte: endDate || startDate,
-            }
-          } : {},
-          action ? {
-            userAction: action,
-          } : {},
-        ]
-      }, options);
+      const data = await loggerSchema.find({}).sort();
       return data;
     } catch (error) {
       throw (error);
