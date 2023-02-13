@@ -5,14 +5,24 @@ import ICreateLogger from "./i_create_logger";
 
 class CreateLoggerDataAccess implements ICreateLogger {
   async listAllLogs(
-    page: string,
-    perPage: string,
     action: string | undefined,
     startDate: string | undefined,
     endDate: string | undefined
   ): Promise<Array<LoggerModel>> {
     try {
-      const data = await loggerSchema.find({}).sort();
+      const data = await loggerSchema.find({
+        $and: [
+          startDate || endDate ? {
+            day: {
+              $gte: startDate || endDate,
+              $lte: endDate || startDate,
+            }
+          } : {},
+          action ? {
+            userAction: action,
+          } : {},
+        ]
+      }).sort();
       return data;
     } catch (error) {
       throw (error);
