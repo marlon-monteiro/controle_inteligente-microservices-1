@@ -8,4 +8,5 @@ export interface LoggerModel {
   userAction?: string;
   description?: string;
   dateTime?: string;
+  proprietary?: string;
 }

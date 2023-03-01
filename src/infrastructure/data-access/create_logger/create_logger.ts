@@ -7,11 +7,15 @@ class CreateLoggerDataAccess implements ICreateLogger {
   async listAllLogs(
     action: string | undefined,
     startDate: string | undefined,
-    endDate: string | undefined
+    endDate: string | undefined,
+    proprietaryId: string
   ): Promise<Array<LoggerModel>> {
     try {
       const data = await loggerSchema.find({
         $and: [
+          {
+            proproprietary: proprietaryId
+          },
           startDate || endDate ? {
             day: {
               $gte: startDate || endDate,

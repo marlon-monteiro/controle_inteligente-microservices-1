@@ -12,9 +12,10 @@ class CreateLoggerUseCase implements ICreateLoggerUseCase {
   async listAllLogs(
     action: string | undefined,
     startDate: string | undefined,
-    endDate: string | undefined
+    endDate: string | undefined,
+    proprietaryId: string
     ): Promise<Array<LoggerModel>> {
-    return await this.createLoggerDataAccess.listAllLogs(action, startDate, endDate);
+    return await this.createLoggerDataAccess.listAllLogs(action, startDate, endDate, proprietaryId);
   }
 
   async execute(payload: LoggerModel): Promise<void> {

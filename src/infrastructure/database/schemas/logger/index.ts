@@ -11,6 +11,11 @@ const loggerSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
   },
+  proprietary: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'proprietary',
+    required: true,
+  },
   userName: { type: 'string' },
   accountId: {
     type: mongoose.Schema.Types.ObjectId,

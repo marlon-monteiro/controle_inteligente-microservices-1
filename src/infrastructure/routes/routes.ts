@@ -5,6 +5,6 @@ import CreateLoggerController from '../../presentation/controllers/logger/create
 const routes = Router();
 
 
-routes.get('/log', new CreateLoggerController().ListAllLogs);
+routes.get('/log/:id', new CreateLoggerController().ListAllLogs);
 
 export default routes;
