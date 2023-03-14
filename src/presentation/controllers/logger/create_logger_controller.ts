@@ -23,7 +23,7 @@ class CreateLoggerController {
   }
   async ListAllLogs(request: Request, response: Response) {
     try {
-      const { proprietary } = request.headers;
+      const { id: proprietary } = request.params;
       const { action, startDate, endDate } = request.query;
       const createLoggerUseCase = new CreateLoggerUseCase();
       const data = await createLoggerUseCase.listAllLogs(action?.toString()!, startDate?.toString()!, endDate?.toString()!, proprietary as string);
