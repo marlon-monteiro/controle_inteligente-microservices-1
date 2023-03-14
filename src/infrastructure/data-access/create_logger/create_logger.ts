@@ -14,7 +14,7 @@ class CreateLoggerDataAccess implements ICreateLogger {
       const data = await loggerSchema.find({
         $and: [
           {
-            proproprietary: proprietaryId
+            proprietary: proprietaryId
           },
           startDate || endDate ? {
             day: {
