@@ -19,8 +19,7 @@ class CreateLoggerUseCase implements ICreateLoggerUseCase {
   }
 
   async execute(payload: LoggerModel): Promise<void> {
-    await this.createLoggerDataAccess.execute(payload)
-    CreateLoggerDataAccess
+    await this.createLoggerDataAccess.execute(payload);
   }
 }
 export default CreateLoggerUseCase;
