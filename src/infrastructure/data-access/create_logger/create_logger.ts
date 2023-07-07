@@ -8,8 +8,11 @@ class CreateLoggerDataAccess implements ICreateLogger {
     action: string | undefined,
     startDate: string | undefined,
     endDate: string | undefined,
-    proprietaryId: string
+    proprietaryId: string,
+    currentPage: string
   ): Promise<Array<LoggerModel>> {
+    var perPage = 100
+    const page = Math.max(0, Number(currentPage))
     try {
       const data = await loggerSchema.find({
         $and: [
@@ -26,7 +29,9 @@ class CreateLoggerDataAccess implements ICreateLogger {
             userAction: action,
           } : {},
         ]
-      }).sort({ dateTime: -1 });
+      }).limit(perPage)
+      .skip(perPage * page).sort({ dateTime: -1 });
+
       return data;
     } catch (error) {
       throw (error);
@@ -41,3 +46,4 @@ class CreateLoggerDataAccess implements ICreateLogger {
   }
 }
 export default CreateLoggerDataAccess;
+

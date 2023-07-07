@@ -6,7 +6,8 @@ interface ICreateLogger {
     action: string | undefined,
     startDate: string | undefined,
     endDate: string | undefined,
-    proprietaryId?: string
+    proprietaryId?: string,
+    currentPage?: string
   ): Promise<Array<LoggerModel>>;
 }
 export default ICreateLogger;
