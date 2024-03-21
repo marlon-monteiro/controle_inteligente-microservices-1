@@ -21,8 +21,16 @@ class CreateLoggerDataAccess implements ICreateLogger {
           },
           startDate || endDate ? {
             day: {
-              $gte: startDate || endDate,
-              $lte: endDate || startDate,
+              $gte: {
+                $regex: new RegExp("^" + startDate),
+              } || {
+                $regex: new RegExp("^" + endDate),
+              },
+              $lte: {
+                $regex: new RegExp("^" + endDate),
+              } || {
+                $regex: new RegExp("^" + startDate),
+              },
             }
           } : {},
           action ? {

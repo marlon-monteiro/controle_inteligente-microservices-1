@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-import { LoggerModel } from '../../../domain/model/logger';
-import CreateLoggerTranslate from '../../../infrastructure/data-access/create_logger/translates/translate';
+import { LoggerModel } from '../../../domain/model/logger';;
 import CreateLoggerUseCase from "../../../services/usecases/logger/create_logger_use_case";
 
 class CreateLoggerController {
@@ -10,8 +9,6 @@ class CreateLoggerController {
         !logger.accountId ||
         !logger.accountName ||
         !logger.userAction ||
-        !logger.day ||
-        !logger.hour ||
         !logger.dateTime ||
         !logger.proprietary
       ) return;
