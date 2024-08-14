@@ -3,8 +3,6 @@ export interface LoggerModel {
   userName?: string,
   accountId?: string,
   accountName?: string,
-  day?: string,
-  hour?: string;
   userAction?: string;
   description?: string;
   dateTime?: string;

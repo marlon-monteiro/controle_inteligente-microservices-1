@@ -6,7 +6,7 @@ import { LoggerModel } from "../../../../domain/model/logger";
 class CreateLoggerTranslate {
   async loggerByGroup(data: Array<LoggerModel>) {
     let payload: Array<{
-      date: string,
+      dateTime: string,
       activities: Array<any>
     }> = []
     of(...data).pipe(
@@ -14,11 +14,11 @@ class CreateLoggerTranslate {
       mergeMap(group$ =>
         group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
       ),
-      map(arr => ({ date: arr[0], activities: arr.slice(1) })),
+      map(arr => ({ dateTime: arr[0], activities: arr.slice(1) })),
       toArray()
     ).subscribe(p => {
       payload = p.sort(function (a, b) {
-        return a.date.localeCompare(b.date)
+        return a.dateTime.localeCompare(b.dateTime)
       });
     });
     return payload;

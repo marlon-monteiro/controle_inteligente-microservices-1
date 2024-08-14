@@ -6,7 +6,6 @@ import 'dotenv/config';
 import DataBase from '../database';
 import Amqp from '../messenger/rabbitMQ';
 import routes from '../routes/routes';
-import loggerSchema from '../database/schemas/logger'
 
 class ServerInstance {
   public express: express.Application;
@@ -17,7 +16,6 @@ class ServerInstance {
     this.middlewares();
     this.database();
     this.routes();
-    //this.updateSchema();
   }
 
   async initMessenger() {
@@ -45,9 +43,6 @@ class ServerInstance {
     new DataBase()
   }
 
-  private async updateSchema() {
-    // await loggerSchema.updateMany({}, { proprietary: '64024ceddc405b103bfe43f7' })
-  }
 
   private routes() {
     this.express.use(routes);
